@@ -37,7 +37,7 @@ android {
 
     defaultConfig {
         applicationId = "com.msp1974.vacompanion"
-        minSdk = 26
+        minSdk = 25
         targetSdk = 36
         versionName = "0.12.1"
         versionCode = code

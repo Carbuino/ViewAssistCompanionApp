@@ -3,8 +3,8 @@ package com.msp1974.vacompanion.satellite
 import android.content.Context
 import android.media.AudioManager
 import com.msp1974.vacompanion.device.DeviceManager
-import com.msp1974.vacompanion.settings.APPConfig
 import com.msp1974.vacompanion.device.VolumeManager
+import com.msp1974.vacompanion.satellite.Satellite.Companion.isoNow
 import com.msp1974.vacompanion.utils.Event
 import com.msp1974.vacompanion.utils.EventListener
 import com.msp1974.vacompanion.utils.SoundControl
@@ -22,8 +22,6 @@ import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonObject
 import timber.log.Timber
-import java.time.Instant
-import java.time.format.DateTimeFormatter
 
 
 class SatelliteCustomEventHandler(
@@ -149,7 +147,7 @@ class SatelliteCustomEventHandler(
             }
             "motion" -> {
                 val value = event.newValue as? Boolean ?: true
-                config.lastMotion = DateTimeFormatter.ISO_INSTANT.format(Instant.now())
+                config.lastMotion = isoNow()
                 satellite.sendStatus(
                     buildJsonObject {
                         putJsonObject("sensors", {
